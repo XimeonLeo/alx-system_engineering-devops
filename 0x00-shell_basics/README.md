@@ -1,2 +1,1 @@
-script to print current working directory
-2. script to list the content of current directory
+all sripts from 0x00-shell_basics running on chmod u+x

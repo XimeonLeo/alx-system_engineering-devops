@@ -1,2 +1,3 @@
-รรร#!/bin/bash
-echo $PATH | tr ':' '/n' ร| wc -1
+#!/bin/bash
+echo $PATH | tr ':' '/n' | wc -1
+

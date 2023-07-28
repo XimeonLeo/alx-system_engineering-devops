@@ -2,7 +2,7 @@
 #A Bash script that gives you information about the school file.
 
 if test -e school; then
-	echo "school file exits"
+	echo "school file exists"
 	if test -s school; then
 		echo "school file is not empty"
 	else
@@ -12,5 +12,5 @@ if test -e school; then
 		echo "school is a regular file"
 	fi
 else
-	echo "school file does not exit"
+	echo "school file does not exists"
 fi

@@ -1,6 +1,5 @@
 # creating a file /tmp/school using Puppet
 file { '/tmp/school':
-  ensure  => 'file',
   mode    => '0774',
   owner   => 'www-data',
   group   => 'www-data',

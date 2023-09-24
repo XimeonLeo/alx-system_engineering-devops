@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Creating a rsa key with 4096 bits with passphrase
+# betty and stores the private key in the file school
+ssh-keygen -t rsa -b 4096 -f school -N betty

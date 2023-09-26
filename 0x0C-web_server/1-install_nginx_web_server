@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+#A bash script that installs Nginx on my server
+
+#  > /etc/nginx/html/index.html
+
+# USING THE PREDEFINED METHOD
+# sudo apt-get update -y
+# sudo apt-get install nginx -y
+# echo "Hello World!" | sudo tee /var/www/html/index.html
+# service nginx start
+
+# USING THE MANUAL METHOD
+# Updating then installing nginx
+sudo apt-get update -y
+sudo apt install nginx -y
+
+# Creating the configuration directory in /etc
+mkdir -p /etc/nginx/html
+
+# Creating the sample page
+echo "Hello World!" > /etc/nginx/html/index.html
+
+# Adding content (Server block file)
+echo "server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /etc/nginx/html;
+
+	index index.html index.htm index.nginx-debian.html;
+	server_name _;
+}
+" > /etc/nginx/sites-available/default
+
+#Rwstarting the server
+nginx -s reload

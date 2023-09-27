@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Using the /redirect_me configuration of nginx
+# Redirection is a "301 Moved Permanetly"
+
+sudo apt-get update -y
+sudo apt install nginx -y
+
+replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.google.com permanent;"
+sudo sed -i "s/server_name _;/$replacement/" /etc/nginx/sites-enabled/default
+
+service nginx restart

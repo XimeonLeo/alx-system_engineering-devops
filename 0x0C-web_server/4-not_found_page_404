@@ -1,18 +1,22 @@
 #!/usr/bin/env bash
-# Installs Nginx with the following configurations:
-#    Listens on port 80.
-#    Returns a page containing "Hello World" when queried
-#    at the root with a curl GET request.
+# Script that installs Nginx server, redirects /redirect_me
+# and handle 404 page not found
 
-# Install nginx
-sudo apt-get update
-sudo apt-get install -y nginx
+# updating pakages and installing nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
 
+# enable Nginx accepts HTTP traffic (port 80) using ufw
+# (Uncomplicated Firewall))
+sudo ufw allow 'Nginx HTTP'
+
+# Creating a custom 404 error page that displays 
+# This is not a pahe in French
 echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
 
+# setting Nginx server to handle 404 errors by redirecting to the custom 404.html page.
 newlines="\\\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}"
 sudo sed -i "27i $newlines" /etc/nginx/sites-available/default
 
-
-# Restart Nginx
+# restarting the Nginx server to apply new configuration
 sudo service nginx restart inside and outside the server.

@@ -8,8 +8,11 @@
 sudo apt-get update
 sudo apt-get install -y nginx
 
-echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
+
+newlines="\\\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}"
+sudo sed -i "27i $newlines" /etc/nginx/sites-available/default
 
 
 # Restart Nginx
-service nginx restart
+sudo service nginx restart inside and outside the server.

@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
-# Adding a custom header to the configuration of Nginx
-#    so as to be able to identify what server was chosen by
-#    localhost
+# returns a custom header on request
 
-
+# updatee then insta nginx
 sudo apt-get -y update
 sudo apt-get -y install nginx
 
+# replacing lines
 sudo sed -i "47i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
 echo "Hello World!" | sudo tee /var/www/html/index.html
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html

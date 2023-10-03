@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# configures a new HAproxy as a load balancer on Ib-01
+
+# updating linux files
+apt-get -y update
+
+# Install HAproxy on a server
+apt-get -y install haproxy
+
+# Configure haproxy configuration file to distribute requests using a roundrobin algorithm
+echo "
+frontend ximeonleo.tech
+        bind 0:80
+        default_backend XL_server
+
+backend XL_server
+        balance roundrobin
+        server 330434-web-01 54.162.80.16
+        server 330434-web-02 54.236.45.116
+" >> /etc/haproxy/haproxy.cfg
+
+# Restart HAproxy service
+service haproxy restart

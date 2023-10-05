@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # running apache on holbertonschool/265-0 docker container
 
-# echo "ServerName localhost" >> /etc/apache2.conf
-echo "Hello Holberton" >> /etc/apache2.conf
+echo "ServerName localhost" >> /etc/apache2.conf
 service apache2 start

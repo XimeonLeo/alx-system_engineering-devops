@@ -12,9 +12,9 @@ if [ $# -ge 4 ]; then
   username="$3"
   priv_key="$4"
 
-  scp -o StrictHostKeyChecking=no -i $priv_key $path $username@$server_ip:~/
+  scp -o StrictHostKeyChecking=no -i "$priv_key" "$path" "$username"@"$server_ip":~/
  
 else
-  scp -o StrictHostKeyChecking=no $path $username@$server_ip:~/
+  scp -o StrictHostKeyChecking=no "$path" "$username"@"$server_ip":~/
 
 fi;

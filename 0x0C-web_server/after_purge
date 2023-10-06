@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script reinstall all the required part for my webserver
+# provided you have the correct files
+
+# using my web servera in sudo mode (as root)
+sudo su
+
+# installing the nginx server newly with some configurations
+./1-install_nginx_web_server
+
+# enabling the redirect me
+./3-redirection
+
+# handling the error page
+./4-not_found_page_404

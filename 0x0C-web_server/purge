@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This script contains command to completely remove the nginx
+# server from my web server
+# use only when your server is messed up
+
+sudo apt purge nginx nginx-common nginx-core -y
+sudo apt autoremove -y
+
+# look for "after_purge" next to reinstall all the requirements
+# back in the order with which tgey are given

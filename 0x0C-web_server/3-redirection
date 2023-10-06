@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
-# Using the /redirect_me configuration of nginx
-# Redirection is a "301 Moved Permanetly"
+# A bash script that configures the Nginx server so that
+# /redirect_me points to another page
 
-sudo apt-get update -y
-sudo apt install nginx -y
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo chown -R "$USER":"$USER" /var/www
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
 
-sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
-sudo sed -i '/^}$/i \ \n\tlocation \/redirect_me {return 301 https:\/\/www.youtube.com;}' /etc/nginx/sites-available/default
-sudo service nginx start
+# adding the redirection line
+sudo sed -i "48i\\\tif (\$request_filename ~ redirect_me){\n\t\t\
+rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;\n\t}" /etc/nginx/sites-available/default
+
+sudo service nginx restart

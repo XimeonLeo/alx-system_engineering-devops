@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
-# Script that installs Nginx server, redirects /redirect_me
-# and handle 404 page not found
+# Script that installs Nginx server, redirects /redirect_me and customizes 404 not found
 
-# updating pakages and installing nginx
 sudo apt-get -y update
 sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+
+# writing an ereor message into nginx default erorr page
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
 
 
-sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
-sudo sed -i '/^}$/i \ \n\tlocation \/redirect_me {return 301 https:\/\/www.youtube.com;}' /etc/nginx/sites-available/default
-sudo sed -i '/^}$/i \ \n\tlocation @404 {return 404 "Ceci n'\''est pas une page\\n";}' /etc/nginx/sites-available/default
-sudo sed -i 's/=404/@404/g' /etc/nginx/sites-available/default
-sudo service nginx start
+line="\\\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}"
+sudo sed -i "27i $line" /etc/nginx/sites-available/default
+
+# restarting the server
+sudo service nginx restart inside and outside the server.

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+leo ()
+{
+  answer=$(dig "$2.$1 | grep -A1 "ANSWER SECTION:" | tail -1")
+  echo "$2 $answer" | awk '{print "The subdomain " $1 " is a " $5 " record and points to " $6}'
+}
+
+if [ "$#" -eq 1 ]
+then
+  leo "$1" "www"
+  leo "$1" "lb-01"
+  leo "$1" "web-01"
+  leo "$1" "web-02"
+elif [ "$#" -eq 2 ]
+then
+  leo "$1" "$2"
+fi

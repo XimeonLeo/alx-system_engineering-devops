@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# A bash script that outputs The subdomain [SUB_DOMAIN] is
+# a [RECORD_TYPE] record and points to [DESTINATION]
 
 leo ()
 {

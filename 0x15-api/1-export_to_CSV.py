@@ -18,8 +18,11 @@ if __name__ == "__main__":
 
     # Employees todo
     tasks = requests.get(tasks_endpoint).json()
-    user_tasks = [[user_id, username, task.get("completed"), task.get("title")] for task in tasks if user_id == task.get("userId")]
-    
+    user_tasks = [[user_id, username,
+                   task.get("completed"),
+                   task.get("title")]
+                  for task in tasks if user_id == task.get("userId")]
+
     # Open a file for writing CSV data
     with open('{}.csv'.format(user_id), 'w', newline='') as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)

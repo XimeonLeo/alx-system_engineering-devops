@@ -37,5 +37,5 @@ if __name__ == '__main__':
     print("Employee {} is done with tasks({}/{}):"
           .format(name, len(taskCmplted), len(emp_task)))
 
-for task in taskCmplted:
-    print("\t {}".format(task.get("title")))
+    for task in taskCmplted:
+        print("\t {}".format(task.get("title")))

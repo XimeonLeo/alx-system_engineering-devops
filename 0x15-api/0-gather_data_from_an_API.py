@@ -13,7 +13,7 @@ import sys
 
 
 if __name__ == '__main__':
-    url = "https://jsonplaceholder.typicode.com"
+    url = "https://jsonplaceholder.typicode.com/"
     empId = int(sys.argv[1])
 
     # employee's endpoint from the url

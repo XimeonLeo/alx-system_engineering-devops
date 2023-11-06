@@ -1,4 +1,6 @@
 # 0x19. Postmortem
+
+![Postmortem](https://github.com/XimeonLeo/alx-system_engineering-devops/blob/master/0x19-postmortem/IMMKT-153-illustration-for-postmortem-page.png)
 ## DevOps
 ## SysAdmin
 
